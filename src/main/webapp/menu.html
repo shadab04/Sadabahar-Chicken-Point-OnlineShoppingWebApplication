@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sadabahar Chicken Point- Menu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #ff6b35;
+      --secondary: #ffd166;
+      --bg-dark: #05060a;
+      --card-bg: #15161d;
+      --text-light: #f9f9fb;
+      --muted: #b3b7c0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: radial-gradient(circle at top, #1b1c26 0, #05060a 45%, #000000 100%);
+      color: var(--text-light);
+      min-height: 100vh;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem 3rem;
+    }
+
+    /* NAVBAR (same style family) */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 6, 10, 0.98),
+        rgba(5, 6, 10, 0.85),
+        transparent
+      );
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      margin-bottom: 1.2rem;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 1.05rem;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffe7c7 0, #ff6b35 40%, #7c1a07 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 2px rgba(255,255,255,0.05);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.88rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--muted);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--secondary), var(--primary));
+      border-radius: 999px;
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a.active {
+      color: var(--text-light);
+      font-weight: 500;
+    }
+
+    .btn-primary {
+      padding: 0.45rem 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #1b1c26;
+      font-weight: 600;
+      font-size: 0.85rem;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+      white-space: nowrap;
+    }
+
+    /* PAGE HEADING + FILTERS */
+    .page-header {
+      margin-top: 0.8rem;
+      margin-bottom: 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+
+    .page-header h1 {
+      font-size: 1.7rem;
+    }
+
+    .page-header p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    .chip {
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.12);
+      cursor: pointer;
+    }
+
+    .chip.active {
+      background: rgba(255,209,102,0.18);
+      border-color: var(--secondary);
+      color: var(--secondary);
+    }
+
+    /* MENU SECTIONS */
+    .section-title {
+      margin-top: 1.3rem;
+      margin-bottom: 0.6rem;
+      font-size: 1.05rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #101118, #181926);
+      border-radius: 18px;
+      padding: 0.85rem;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      font-size: 0.82rem;
+    }
+
+    .card-img {
+      height: 130px;
+      border-radius: 14px;
+      background-size: cover;
+      background-position: center;
+      margin-bottom: 0.5rem;
+      position: relative;
+    }
+
+    .badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      font-size: 0.7rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.65);
+      color: var(--secondary);
+    }
+
+    .card h3 {
+      font-size: 0.95rem;
+      margin-bottom: 0.18rem;
+    }
+
+    .card p {
+      font-size: 0.76rem;
+      color: var(--muted);
+      margin-bottom: 0.5rem;
+    }
+
+    .card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    .btn-add {
+      font-size: 0.72rem;
+      padding: 0.22rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.04);
+      cursor: pointer;
+      color: white;
+    }
+
+    .label-pill {
+      font-size: 0.7rem;
+      padding: 0.15rem 0.45rem;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.18);
+      display: inline-block;
+      margin-right: 0.3rem;
+      margin-top: 0.1rem;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      margin-top: 2rem;
+      padding-top: 1rem;
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    @media (max-width: 900px) {
+      .menu-grid {
+        grid-template-columns: repeat(2, minmax(0,1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrapper { padding-inline: 1rem; }
+      .nav { padding-inline: 1rem; }
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <div class="logo">
+        <div class="logo-icon">🍗</div>
+        <span>Sadabahar Chicken Point</span>
+      </div>
+      <div class="nav-links">
+        <a href="Home.html">Home</a>
+        <a href="menu.html" class="active">Menu</a>
+        <a href="offers.html">Offers</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+      </div>
+      <button class="btn-primary" onclick="location.href='Home.html'">Order Now</button>
+    </nav>
+  </header>
+
+  <main class="wrapper">
+    <section class="page-header">
+      <div>
+        <h1>Our Chicken Menu</h1>
+        <p>From crispy buckets to cheesy burgers – explore all the Cluckify favourites in one place.</p>
+      </div>
+      <div class="filters">
+        <span class="chip active">All</span>
+        <span class="chip">Buckets</span>
+        <span class="chip">Burgers & Rolls</span>
+        <span class="chip">Snacks</span>
+        <span class="chip">Combos</span>
+      </div>
+    </section>
+
+    <!-- Buckets -->
+    <section>
+      <h2 class="section-title">Buckets & Sharing Meals</h2>
+      <div class="menu-grid">
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/4109130/pexels-photo-4109130.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">Hot</span>
+          </div>
+          <h3>Smoky Peri-Peri Bucket (8 pcs)</h3>
+          <p>Spicy peri-peri fried chicken with herbed fries & garlic dip.</p>
+          <div class="card-bottom">
+            <span class="price">₹599</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/60616/fried-chicken-chicken-fried-crunchy-60616.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">Family</span>
+          </div>
+          <h3>Family Feast Bucket (12 pcs)</h3>
+          <p>Mix of classic & spicy pieces, fries and 3 dips – serves 4.</p>
+          <div class="card-bottom">
+            <span class="price">₹899</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/4109131/pexels-photo-4109131.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">Bestseller</span>
+          </div>
+          <h3>Classic Crunch Bucket (6 pcs)</h3>
+          <p>Golden fried chicken, mild spice, kids’ favourite.</p>
+          <div class="card-bottom">
+            <span class="price">₹449</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Burgers -->
+    <section>
+      <h2 class="section-title">Burgers & Rolls</h2>
+      <div class="menu-grid">
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">Cheesy</span>
+          </div>
+          <h3>Cheesy Lava Chicken Burger</h3>
+          <p>Stuffed patty with molten cheese & house special sauce.</p>
+          <div class="card-bottom">
+            <span class="price">₹249</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/1600727/pexels-photo-1600727.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">Spicy</span>
+          </div>
+          <h3>Fiery Crunch Chicken Burger</h3>
+          <p>Extra spicy fried chicken, jalapeños & chipotle mayo.</p>
+          <div class="card-bottom">
+            <span class="price">₹259</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">Roll</span>
+          </div>
+          <h3>Tandoori Chicken Roll</h3>
+          <p>Soft rumali roti wrap with smoky tandoori chicken & veggies.</p>
+          <div class="card-bottom">
+            <span class="price">₹199</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Snacks / Sides -->
+    <section>
+      <h2 class="section-title">Snacks & Sides</h2>
+      <div class="menu-grid">
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/3915854/pexels-photo-3915854.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">Loaded</span>
+          </div>
+          <h3>Loaded Chicken Fries Box</h3>
+          <p>Crispy fries, chicken popcorn, cheese sauce & jalapeños.</p>
+          <div class="card-bottom">
+            <span class="price">₹279</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/1352278/pexels-photo-1352278.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">New</span>
+          </div>
+          <h3>Chicken Popcorn Bites (Regular)</h3>
+          <p>Crunchy bite-sized chicken, perfect for sharing.</p>
+          <div class="card-bottom">
+            <span class="price">₹199</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-img" style="background-image:url('https://images.pexels.com/photos/4109134/pexels-photo-4109134.jpeg?auto=compress&cs=tinysrgb&w=800');">
+            <span class="badge">Add-on</span>
+          </div>
+          <h3>Garlic Mayo Dip</h3>
+          <p>Rich creamy dip to upgrade any meal.</p>
+          <div class="card-bottom">
+            <span class="price">₹29</span>
+            <button class="btn-add">Add +</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Labels info -->
+    <section style="margin-top:1.4rem;font-size:0.78rem;color:var(--muted);">
+      <span class="label-pill">🌶 Spicy</span>
+      <span class="label-pill">🥯 Crispy</span>
+      <span class="label-pill">🧀 Extra Cheese</span>
+      <span class="label-pill">👨‍👩‍👧 Family Pack</span>
+    </section>
+
+    <footer>
+      <small>© Sadabahar Chicken Point 2025 • Prices may vary by location. Taxes extra.</small>
+    </footer>
+  </main>
+</body>
+</html>

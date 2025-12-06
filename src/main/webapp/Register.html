@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sadabahar Chicken Point - Register</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #ff6b35;
+      --secondary: #ffd166;
+      --bg-dark: #05060a;
+      --card-bg: #15161d;
+      --text-light: #f9f9fb;
+      --muted: #b3b7c0;
+      --accent: #06d6a0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      min-height: 100vh;
+      background: radial-gradient(circle at top,
+        #1b1c26 0,
+        #05060a 45%,
+        #000000 100%);
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .auth-wrapper {
+      width: 100%;
+      max-width: 470px;
+      background: linear-gradient(145deg, #101118, #181926);
+      border-radius: 22px;
+      padding: 1.8rem 1.7rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.75);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .auth-wrapper::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255, 209, 102, 0.18), transparent 60%),
+        radial-gradient(circle at 100% 0%, rgba(255, 107, 53, 0.25), transparent 60%);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .auth-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .logo-icon {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #ffe7c7 0, #ff6b35 40%, #7c1a07 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.08);
+    }
+
+    .logo span {
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.95rem;
+    }
+
+    h1 {
+      font-size: 1.4rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .subtitle {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 1.4rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+    }
+
+    label {
+      color: var(--muted);
+    }
+
+    input, textarea, select {
+      background: rgba(5, 6, 12, 0.9);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 0.55rem 0.9rem;
+      font-size: 0.85rem;
+      outline: none;
+      color: var(--text-light);
+      transition: 0.18s ease;
+      resize: vertical;
+      min-height: 38px;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 1px rgba(255, 209, 102, 0.5);
+    }
+
+    .two-cols {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .helper {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      margin-top: 0.2rem;
+      color: var(--muted);
+    }
+
+    .checkbox-row input {
+      width: auto;
+      min-height: auto;
+      border-radius: 4px;
+    }
+
+    .btn-primary {
+      margin-top: 0.6rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #1b1c26;
+      font-weight: 600;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.4rem;
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.7);
+      width: 100%;
+      transition: 0.18s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    .bottom-text {
+      margin-top: 0.9rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .bottom-text a {
+      color: var(--secondary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .bottom-text a:hover {
+      text-decoration: underline;
+    }
+
+    .back-home {
+      margin-top: 0.4rem;
+      text-align: center;
+      font-size: 0.78rem;
+    }
+
+    .back-home a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+
+    .back-home a:hover {
+      color: var(--secondary);
+    }
+
+    @media (max-width: 480px) {
+      .auth-wrapper {
+        padding: 1.6rem 1.3rem 1.3rem;
+      }
+
+      .two-cols {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="auth-wrapper">
+    <div class="auth-inner">
+      <div class="logo">
+        <div class="logo-icon">🍗</div>
+        <span>Sadabahar Chicken Point</span>
+      </div>
+
+      <h1>Create account</h1>
+      <p class="subtitle">Save your address, repeat your favourite orders and unlock offers.</p>
+
+      <!-- Change action="RegisterServ" to your servlet mapping -->
+      <form action="RegisterServ" method="post">
+        <div class="field-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required />
+        </div>
+
+        <div class="two-cols">
+          <div class="field-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field-group">
+            <label for="phone">Mobile</label>
+            <input type="tel" id="phone" name="phone" placeholder="XXXXXXXXXX" required />
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label for="address">Delivery Address</label>
+          <textarea id="address" name="address" rows="2" placeholder="Flat / Street / Landmark" required></textarea>
+          <span class="helper">We’ll save this as your default delivery address.</span>
+        </div>
+
+        <div class="two-cols">
+          <div class="field-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Create password" required />
+          </div>
+          <div class="field-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Re-enter password" required />
+          </div>
+        </div>
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="terms" required />
+          <label for="terms">I agree to receive order updates & offers on WhatsApp/SMS.</label>
+        </div>
+
+        <button type="submit" class="btn-primary">
+          Create Account <span>➜</span>
+        </button>
+      </form>
+
+      <p class="bottom-text">
+        Already have an account?
+        <a href="Login.html">Login</a>
+      </p>
+
+      <p class="back-home">
+        <a href="Home.html">← Back to Home</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>
