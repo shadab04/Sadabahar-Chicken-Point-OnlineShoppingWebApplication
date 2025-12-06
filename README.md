@@ -6,6 +6,8 @@ Built using Java Servlets, JSP, MySQL, and modern frontend technologies, this pr
 <p align="center">
   🚀 Demo GIF coming soon – work in progress.
 </p>
+<img width="1760" height="909" alt="Screenshot 2025-12-06 233400" src="https://github.com/user-attachments/assets/41ebc92e-da38-49b1-9031-0121719a1f47" />
+
 📌 Overview
 
 Sadabahar Chicken Point is a modern restaurant web app built to simulate real-world food ordering systems.
