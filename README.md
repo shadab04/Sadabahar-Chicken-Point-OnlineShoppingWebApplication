@@ -191,34 +191,8 @@ http://localhost:8080/OnlineShoppingProject/Home.html
 4️⃣ Session created → redirected to Welcome page
 5️⃣ Logout destroys session
 
-Email + Mobile Validation Logic
-if (loginInput.contains("@")) {
-   // email login
-} else {
-   // phone login (digits only)
-   String phone = loginInput.replaceAll("[^0-9]", "");
-}
-
-🌟 Highlighted Code Snippets
-📌 Dynamic Phone/Email Login
-String loginInput = request.getParameter("email");
-
-if (loginInput.contains("@")) {
-    ps = con.prepareStatement("SELECT * FROM userregister WHERE Email=? AND Password=?");
-} else {
-    String phone = loginInput.replaceAll("[^0-9]", "");
-    ps = con.prepareStatement("SELECT * FROM userregister WHERE MobileNumber=? AND Password=?");
-}
-
-📌 Example DB Connection
-Class.forName("com.mysql.cj.jdbc.Driver");
-Connection con = DriverManager.getConnection(url, user, pass);
-
-📌 Error Message Rendering
-<% if(request.getAttribute("error")!=null) { %>
-   <p class="error"><%= request.getAttribute("error") %></p>
-<% } %>
-
+ <img width="939" height="685" alt="image" src="https://github.com/user-attachments/assets/64cb9fdf-bf7e-49c9-a5d4-dbb6367cec37" />
+ 
 🚀 Future Enhancements
 
 Order cart system
@@ -257,3 +231,4 @@ Shadab Khan
 🔗 GitHub: https://github.com/shadab04
 
 ⭐ If you like this project, don’t forget to give it a star!
+ 
